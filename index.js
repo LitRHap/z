@@ -462,7 +462,7 @@ async function starts() {
 					loli.getSFWLoli(async (err, res) => {
 						if (err) return reply('❌ *ERROR* ❌')
 						buffer = await getBuffer(res.url)
-						client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Ingat! Citai Lolimu'})
+						client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Ingat! Cintai Lolimu'})
 					})
 					break
 				case 'nsfwloli':
@@ -475,7 +475,7 @@ async function starts() {
 					break
 				case 'hilih':
 					client.updatePresence(from, Presence.composing) 
-					anu = await fetchJson(`https://mhankbarbars.herokuapp.com/api/hilih?teks=${body.slice(7)}`, {method: 'get'})
+					anu = await fetchJson(`https://mhankbarbars.tech/api/hilih?teks=${body.slice(7)}`, {method: 'get'})
 					reply(anu.result)
 					break
 				case 'ytmp3':
@@ -483,7 +483,7 @@ async function starts() {
 					if (!isPremium) return reply(mess.only.premi)
 					if (args.length < 1) return reply('Urlnya mana um?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
-					anu = await fetchJson(`https://mhankbarbars.herokuapp.com/api/yta?url=${args[0]}&apiKey=${apiKey}`, {method: 'get'})
+					anu = await fetchJson(`https://mhankbarbars.tech/api/yta?url=${args[0]}&apiKey=${apiKey}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
 					teks = `*Title* : ${anu.title}\n*Filesize* : ${anu.filesize}`
 					thumb = await getBuffer(anu.thumb)
@@ -494,7 +494,7 @@ async function starts() {
 				case 'ytsearch':
 					client.updatePresence(from, Presence.composing) 
 					if (args.length < 1) return reply('Yang mau di cari apaan??')
-					anu = await fetchJson(`https://mhankbarbars.herokuapp.com/api/ytsearch?q=${body.slice(10)}&apiKey=${apiKey}`, {method: 'get'})
+					anu = await fetchJson(`https://mhankbarbars.tech/api/ytsearch?q=${body.slice(10)}&apiKey=${apiKey}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
 					teks = '--------------------------\n'
 					for (let i of anu.result) {
